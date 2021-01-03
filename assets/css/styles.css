@@ -1,0 +1,28 @@
+.svg-holder {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	z-index: -100;
+}
+
+.svg-holder svg {
+	width: 100%;
+	height: 100%;
+}
+
+.polygon {
+	background-color: #0d6efd;
+	fill: #0d6efd;
+}
+
+#first-container,
+#second-container {
+    display: flex;
+    position: absolute;
+}
+
+#second-container {
+	width: 50%;
+    opacity: 0;
+    display: none;
+}

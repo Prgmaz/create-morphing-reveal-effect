@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Programmer101N</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<div class="d-flex justify-content-center align-items-center min-vw-100 min-vh-100">
+    <div class="svg-holder">
+        <svg viewBox="0 0 215 110" preserveAspectRatio="none">
+            <polygon class="polygon" points="215,110 0,110 0,0 215,0"></polygon>
+        </svg>
+    </div>
+    <div id="first-container" class="align-items-center justify-content-center">
+        <button id="open" class="btn btn-outline-light btn-lg">Click me</button>
+    </div>
+
+    <div id="second-container" class="align-items-center justify-content-center flex-column">
+        <h1><strong>Programmer101N</strong></h1>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis dignissimos
+            eligendi id impedit
+            inventore iusto minus quasi sunt voluptatibus? Mollitia nam nesciunt nobis quaerat voluptates. Facere
+            nesciunt placeat reiciendis.</p>
+        <button id="close" class="btn btn-outline-dark btn-lg">Click to Close</button>
+    </div>
+</div>
+</body>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/anime.min.js"></script>
+<script>
+    function closeContainer(){
+        const newTimeline = anime.timeline({
+            duration: 2500,
+        });
+        newTimeline.add({
+            targets: "#second-container",
+            duration: 500,
+            translateY: ["0%", "-25%"],
+            opacity: [1, 0],
+            complete: () => {
+                $("#second-container").css('display', 'none');
+            },
+        });
+        newTimeline.add({
+            targets: '.polygon',
+            points: '215,110 0,110 0,0 215,0',
+            duration: 500,
+            easing: 'linear',
+        });
+        newTimeline.add({
+            targets: '#first-container',
+            translateX: ["25%", "0%"],
+            opacity: [0, 1],
+            duration: 1000,
+            begin: () => {
+                $("#first-container").css('display', 'flex');
+            }
+        });
+    }
+
+    function openContainer(){
+        const newTimeline = anime.timeline({
+            duration: 2500,
+        });
+        newTimeline.add({
+            targets: "#first-container",
+            duration: 500,
+            translateX: ["0%", "25%"],
+            opacity: [1, 0],
+            complete: () => {
+                $("#first-container").css('display', 'none');
+            },
+        });
+        newTimeline.add({
+            targets: '.polygon',
+            points: '215,110 0,110 186,86 215,0',
+            duration: 1000,
+            easing: 'linear',
+        });
+        newTimeline.add({
+            targets: '#second-container',
+            translateY: ["-25%", "0%"],
+            opacity: [0, 1],
+            duration: 1000,
+            begin: () => {
+                $("#second-container").css('display', 'flex');
+            }
+        });
+    }
+
+    $("#open").click(openContainer);
+
+    $("#close").click(closeContainer);
+</script>
+</html>
